@@ -1,16 +1,35 @@
 import { Button } from "@/components/ui/button";
 import heroImage from "@/assets/hero-image.jpg";
+import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
+import { useEffect, useRef } from "react";
 
 const HeroSection = () => {
   const openWhatsApp = () => {
     window.open("https://wa.me/628978898454?text=Hallo%20Kak%20Admin,%20Saya%20Berminat%20dengan%20Paket%20Digital%20Marketingnya.%20Bisa%20konsultasi%3F", "_blank");
   };
 
+  const ref = useRef(null);
+  const { ref: inViewRef, inView } = useInView({
+    threshold: 0.2,
+  });
+
+  useEffect(() => {
+    if (inView) {
+      // Add your animation logic here if needed
+    }
+  }, [inView]);
+
   return (
-    <section id="hero" className="min-h-screen flex items-center justify-center pt-16 px-4">
+    <section id="hero" className="min-h-screen flex items-center justify-center pt-16 px-4" ref={inViewRef}>
       <div className="container mx-auto">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8 animate-fade-in-up">
+          <motion.div
+            className="space-y-8"
+            initial={{ opacity: 0, y: 50 }}
+            animate={{ opacity: inView ? 1 : 0, y: inView ? 0 : 50 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
             <div className="space-y-4">
               <h1 className="text-4xl lg:text-6xl font-bold leading-tight">
                 Paket Jasa{" "}
@@ -23,35 +42,38 @@ const HeroSection = () => {
                 jangkauan pelanggan, dan penjualan Anda bersama kami.
               </p>
             </div>
-            
             <div className="flex flex-col sm:flex-row gap-4">
-              <Button 
+              <Button
                 onClick={openWhatsApp}
-                size="lg" 
+                size="lg"
                 className="bg-primary hover:bg-primary/90 text-primary-foreground px-8 py-6 text-lg rounded-xl"
               >
                 Konsultasi Gratis
               </Button>
-              <Button 
+              <Button
                 onClick={() => {
                   document.getElementById("social-media")?.scrollIntoView({ behavior: "smooth" });
                 }}
-                variant="outline" 
+                variant="outline"
                 size="lg"
                 className="px-8 py-6 text-lg rounded-xl border-2 border-primary text-primary hover:bg-primary hover:text-primary-foreground"
               >
                 Lihat Layanan
               </Button>
             </div>
-          </div>
-          
-          <div className="animate-scale-in">
-            <img 
-              src={heroImage} 
-              alt="Digital Marketing untuk UMKM" 
+          </motion.div>
+          <motion.div
+            className="animate-scale-in"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: inView ? 1 : 0, scale: inView ? 1 : 0.8 }}
+            transition={{ duration: 0.5, delay: 0.4 }}
+          >
+            <img
+              src={heroImage}
+              alt="Digital Marketing untuk UMKM"
               className="w-full h-auto rounded-2xl shadow-lg floating-image"
             />
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
