@@ -11,7 +11,7 @@ const WebsiteSection = () => {
     "Optimasi SEO Dasar",
     "Setup Complete",
     "Support & Maintenance",
-    "Perpanjangan tahunan Rp290.000"
+    "Perpanjangan tahunan Rp190.000"
   ];
 
   return (
