@@ -1,7 +1,9 @@
 import ServiceCard from "./ServiceCard";
 import adsImage from "@/assets/ads-service.jpg";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 
 const AdsSection = () => {
+  const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
   const adsFeatures = [
     "Planning Goal",
     "Setting Target Market / Audience",
@@ -13,8 +15,8 @@ const AdsSection = () => {
 
   return (
     <section id="ads" className="section-spacing px-4">
-      <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-in-up">
+      <div ref={ref} className="container mx-auto">
+        <div className={`text-center mb-16 transition-all duration-1000 ${isIntersecting ? 'animate-fade-in-up' : 'opacity-0 transform translate-y-10'}`}>
           <h2 className="text-3xl lg:text-5xl font-bold mb-6">
             Jasa Iklan Media Sosial
           </h2>
@@ -29,7 +31,7 @@ const AdsSection = () => {
           />
         </div>
 
-        <div className="max-w-md mx-auto animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+        <div className={`max-w-md mx-auto transition-all duration-1000 ${isIntersecting ? 'animate-fade-in-up' : 'opacity-0 transform translate-y-10'}`} style={{ animationDelay: "0.2s" }}>
           <ServiceCard
             title="Iklan IG + FB"
             price="Rp390.000"

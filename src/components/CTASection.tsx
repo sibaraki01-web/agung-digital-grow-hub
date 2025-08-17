@@ -1,21 +1,23 @@
 import { Button } from "@/components/ui/button";
 import { MessageCircle, Phone } from "lucide-react";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 
 const CTASection = () => {
+  const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
   const openWhatsApp = () => {
-    window.open("https://wa.me/628978898454", "_blank");
+    window.open("https://wa.me/628978898454?text=Hallo%20Kak%20Admin,%20Saya%20Berminat%20dengan%20Paket%20Digital%20Marketingnya.%20Bisa%20konsultasi%3F", "_blank");
   };
 
   return (
     <section id="contact" className="section-spacing px-4 bg-primary/5">
-      <div className="container mx-auto text-center">
-        <div className="max-w-3xl mx-auto animate-fade-in-up">
+      <div ref={ref} className="container mx-auto text-center">
+        <div className={`max-w-3xl mx-auto transition-all duration-1000 ${isIntersecting ? 'animate-fade-in-up' : 'opacity-0 transform translate-y-10'}`}>
           <h2 className="text-3xl lg:text-5xl font-bold mb-6">
             Siap Tingkatkan Bisnis Anda?
           </h2>
           <p className="text-xl text-muted-foreground mb-8">
-            Konsultasi gratis untuk menentukan strategi digital marketing terbaik untuk bisnis Anda. 
-            Tim ahli kami siap membantu mewujudkan goals bisnis Anda.
+            Konsultasi gratis untuk menentukan strategi digital marketing untuk bisnis Anda. 
+            Kami siap membantu mewujudkan goals bisnis Anda.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
@@ -38,7 +40,7 @@ const CTASection = () => {
               Konsultasi Gratis
             </Button>
             <Button asChild>
-              <a href="https://api.whatsapp.com/send/?phone=628978898454&text=Hai, kak Admin. Saya tertarik untuk jasa digital marketingnya" target="_blank" rel="noopener noreferrer">
+              <a href="https://api.whatsapp.com/send/?phone=628978898454&text=Hallo%20Kak%20Admin,%20Saya%20Berminat%20dengan%20Paket%20Digital%20Marketingnya.%20Bisa%20konsultasi%3F" target="_blank" rel="noopener noreferrer">
                 WhatsApp Us
               </a>
             </Button>
@@ -46,7 +48,6 @@ const CTASection = () => {
           
           <div className="mt-8 text-sm text-muted-foreground">
             <p>WhatsApp: +62 897-8898-454</p>
-            <p>Respon cepat dalam 5 menit</p>
           </div>
         </div>
       </div>

@@ -1,7 +1,9 @@
 import ServiceCard from "./ServiceCard";
 import socialMediaImage from "@/assets/social-media-service.jpg";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 
 const SocialMediaSection = () => {
+  const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
   const basicFeatures = [
     "Total 25 Konten",
     "20 Desain Feed",
@@ -26,8 +28,8 @@ const SocialMediaSection = () => {
 
   return (
     <section id="social-media" className="section-spacing px-4 bg-secondary/30">
-      <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-in-up">
+      <div ref={ref} className="container mx-auto">
+        <div className={`text-center mb-16 transition-all duration-1000 ${isIntersecting ? 'animate-fade-in-up' : 'opacity-0 transform translate-y-10'}`}>
           <h2 className="text-3xl lg:text-5xl font-bold mb-6">
             Jasa Kelola Media Sosial
           </h2>
@@ -43,7 +45,7 @@ const SocialMediaSection = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          <div className="animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+          <div className={`transition-all duration-1000 ${isIntersecting ? 'animate-fade-in-up' : 'opacity-0 transform translate-y-10'}`} style={{ animationDelay: "0.2s" }}>
             <ServiceCard
               title="Paket Basic"
               price="Rp1.280.000"
@@ -51,7 +53,7 @@ const SocialMediaSection = () => {
             />
           </div>
           
-          <div className="animate-fade-in-up" style={{ animationDelay: "0.4s" }}>
+          <div className={`transition-all duration-1000 ${isIntersecting ? 'animate-fade-in-up' : 'opacity-0 transform translate-y-10'}`} style={{ animationDelay: "0.4s" }}>
             <ServiceCard
               title="Paket Plus"
               price="Rp1.480.000"

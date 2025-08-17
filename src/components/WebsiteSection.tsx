@@ -1,7 +1,9 @@
 import ServiceCard from "./ServiceCard";
 import websiteImage from "@/assets/website-service.jpg";
+import useIntersectionObserver from "@/hooks/useIntersectionObserver";
 
 const WebsiteSection = () => {
+  const [ref, isIntersecting] = useIntersectionObserver({ threshold: 0.1 });
   const websiteFeatures = [
     "Free Hosting",
     "Free Domain",
@@ -14,8 +16,8 @@ const WebsiteSection = () => {
 
   return (
     <section id="website" className="section-spacing px-4 bg-secondary/30">
-      <div className="container mx-auto">
-        <div className="text-center mb-16 animate-fade-in-up">
+      <div ref={ref} className="container mx-auto">
+        <div className={`text-center mb-16 transition-all duration-1000 ${isIntersecting ? 'animate-fade-in-up' : 'opacity-0 transform translate-y-10'}`}>
           <h2 className="text-3xl lg:text-5xl font-bold mb-6">
             Jasa Pembuatan Website
           </h2>
@@ -30,7 +32,7 @@ const WebsiteSection = () => {
           />
         </div>
 
-        <div className="max-w-md mx-auto animate-fade-in-up" style={{ animationDelay: "0.2s" }}>
+        <div className={`max-w-md mx-auto transition-all duration-1000 ${isIntersecting ? 'animate-fade-in-up' : 'opacity-0 transform translate-y-10'}`} style={{ animationDelay: "0.2s" }}>
           <ServiceCard
             title="Website UMKM"
             price="Rp490.000"

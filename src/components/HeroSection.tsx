@@ -3,7 +3,7 @@ import heroImage from "@/assets/hero-image.jpg";
 
 const HeroSection = () => {
   const openWhatsApp = () => {
-    window.open("https://wa.me/628978898454", "_blank");
+    window.open("https://wa.me/628978898454?text=Hallo%20Kak%20Admin,%20Saya%20Berminat%20dengan%20Paket%20Digital%20Marketingnya.%20Bisa%20konsultasi%3F", "_blank");
   };
 
   return (
@@ -19,8 +19,8 @@ const HeroSection = () => {
                 </span>
               </h1>
               <p className="text-xl text-muted-foreground max-w-2xl">
-                Solusi lengkap digital marketing untuk UMKM. Tingkatkan brand awareness, 
-                jangkauan pelanggan, dan penjualan Anda dengan layanan profesional kami.
+                Solusi lengkap digital marketing untuk bisnis Anda. Tingkatkan brand awareness,
+                jangkauan pelanggan, dan penjualan Anda bersama kami.
               </p>
             </div>
             
@@ -49,7 +49,7 @@ const HeroSection = () => {
             <img 
               src={heroImage} 
               alt="Digital Marketing untuk UMKM" 
-              className="w-full h-auto rounded-2xl shadow-lg"
+              className="w-full h-auto rounded-2xl shadow-lg floating-image"
             />
           </div>
         </div>
