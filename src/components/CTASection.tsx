@@ -37,6 +37,11 @@ const CTASection = () => {
               <Phone className="h-6 w-6" />
               Konsultasi Gratis
             </Button>
+            <Button asChild>
+              <a href="https://api.whatsapp.com/send/?phone=628978898454&text=Hai, kak Admin. Saya tertarik untuk jasa digital marketingnya" target="_blank" rel="noopener noreferrer">
+                WhatsApp Us
+              </a>
+            </Button>
           </div>
           
           <div className="mt-8 text-sm text-muted-foreground">
