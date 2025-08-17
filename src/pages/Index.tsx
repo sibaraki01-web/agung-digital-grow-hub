@@ -1,3 +1,4 @@
+import { AnimatePresence } from "framer-motion";
 import Header from "@/components/Header";
 import BottomNavigation from "@/components/BottomNavigation";
 import HeroSection from "@/components/HeroSection";
@@ -11,13 +12,15 @@ const Index = () => {
   return (
     <div className="min-h-screen">
       <Header />
-      <main>
-        <HeroSection />
-        <SocialMediaSection />
-        <AdsSection />
-        <WebsiteSection />
-        <CTASection />
-      </main>
+      <AnimatePresence>
+        <main>
+          <HeroSection />
+          <SocialMediaSection />
+          <AdsSection />
+          <WebsiteSection />
+          <CTASection />
+        </main>
+      </AnimatePresence>
       <Footer />
       <BottomNavigation />
     </div>
